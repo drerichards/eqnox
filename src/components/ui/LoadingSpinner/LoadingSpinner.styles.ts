@@ -1,11 +1,11 @@
 import styled, { keyframes } from 'styled-components';
 
-const spin = keyframes`
+export const spin = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 `;
 
-const SpinnerOverlay = styled.div`
+export const SpinnerOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -25,7 +25,7 @@ const SpinnerOverlay = styled.div`
   }
 `;
 
-const Spinner = styled.div`
+export const Spinner = styled.div`
   width: 40px;
   height: 40px;
   border: 3px solid rgba(255, 255, 255, 0.1);
@@ -33,11 +33,3 @@ const Spinner = styled.div`
   border-top-color: #4682b4;
   animation: ${spin} 1s ease-in-out infinite;
 `;
-
-export function LoadingSpinner({ isVisible }: { isVisible: boolean }) {
-    return (
-        <SpinnerOverlay className={isVisible ? 'visible' : ''}>
-            <Spinner />
-        </SpinnerOverlay>
-    );
-} 

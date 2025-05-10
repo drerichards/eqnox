@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import StyledRegistry from '../StyledRegistry';
+import StyledRegistry from './StyledRegistry';
 
 jest.mock('@/lib/registry', () => ({
     __esModule: true,

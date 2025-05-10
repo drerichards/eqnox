@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import StyleProvider from '../StyleProvider';
+import StyleProvider from './StyleProvider';
 
 jest.mock('@/lib/registry', () => ({
     __esModule: true,

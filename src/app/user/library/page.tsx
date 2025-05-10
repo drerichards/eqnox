@@ -5,10 +5,10 @@ import { FC, Suspense, useEffect } from 'react';
 import { usePlaylists } from '@/hooks/usePlaylists';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useNetworkAwareLimit } from '@/hooks/useNetworkAwareLimit';
-import { PlaylistErrorBoundary } from '@/components/PlaylistErrorBoundary';
-import { PlaylistSkeletonGrid } from '@/components/PlaylistSkeletonGrid';
-import { VirtualizedPlaylistGrid } from '@/components/VirtualizedPlaylistGrid';
-import { PlaylistControls } from '@/components/PlaylistControls';
+import { PlaylistErrorBoundary } from '@/components/features/playlist/PlaylistErrorBoundary/PlaylistErrorBoundary';
+import { PlaylistSkeletonGrid } from '@/components/features/playlist/PlaylistSkeletonGrid/PlaylistSkeletonGrid';
+import { PlaylistGrid } from '@/components/features/playlist/PlaylistGrid/PlaylistGrid';
+import { PlaylistControls } from '@/components/features/playlist/PlaylistControls/PlaylistControls';
 
 const Container = styled.div`
   padding: 2rem;
@@ -35,7 +35,7 @@ const LibraryPage: FC = () => {
     useEffect(() => {
         const maxPages = Math.ceil(total / limit);
         if (total > 0 && page > maxPages) {
-            const params = new URLSearchParams(searchParams);
+            const params = new URLSearchParams(searchParams.toString());
             params.set('page', maxPages.toString());
             router.replace(`/user/library?${params.toString()}`);
         }
@@ -46,7 +46,7 @@ const LibraryPage: FC = () => {
             <PlaylistErrorBoundary>
                 <Suspense fallback={<PlaylistSkeletonGrid />}>
                     <PlaylistControls />
-                    <VirtualizedPlaylistGrid
+                    <PlaylistGrid
                         playlists={playlists}
                         isLoading={isLoading}
                         error={error}

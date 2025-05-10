@@ -1,10 +1,7 @@
-'use client';
-
 import styled from 'styled-components';
-import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
@@ -18,7 +15,7 @@ const Nav = styled.nav`
   z-index: 50;
 `;
 
-const Logo = styled(Link)`
+export const Logo = styled(Link)`
   color: white;
   font-size: 1.5rem;
   font-weight: 600;
@@ -26,13 +23,13 @@ const Logo = styled(Link)`
   font-family: var(--font-mulish);
 `;
 
-const NavLinks = styled.div`
+export const NavLinks = styled.div`
   display: flex;
   gap: 1.5rem;
   align-items: center;
 `;
 
-const NavLink = styled(Link)`
+export const NavLink = styled(Link)`
   color: #9ca3af;
   text-decoration: none;
   font-family: var(--font-mulish);
@@ -43,7 +40,7 @@ const NavLink = styled(Link)`
   }
 `;
 
-const LogoutButton = styled.button`
+export const LogoutButton = styled.button`
   background: none;
   border: none;
   color: #9ca3af;
@@ -56,27 +53,3 @@ const LogoutButton = styled.button`
     color: white;
   }
 `;
-
-export default function Navigation() {
-  const { data: session } = useSession();
-
-  const handleLogout = async () => {
-    await signOut({ callbackUrl: '/' });
-  };
-
-  return (
-    <Nav>
-      <Logo href="/">EQnox</Logo>
-      <NavLinks>
-        {session ? (
-          <>
-            <NavLink href="/user/library">Library</NavLink>
-            <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
-          </>
-        ) : (
-          <NavLink href="/auth/login">Login</NavLink>
-        )}
-      </NavLinks>
-    </Nav>
-  );
-}

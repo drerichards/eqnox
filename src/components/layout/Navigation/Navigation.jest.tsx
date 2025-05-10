@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
-import Navigation from '../Navigation';
+import Navigation from './Navigation';
 
 // Mock next-auth/react
 jest.mock('next-auth/react', () => ({
