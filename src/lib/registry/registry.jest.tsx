@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import StyledComponentsRegistry from '../registry';
+import StyledComponentsRegistry from '../registry/registry';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 

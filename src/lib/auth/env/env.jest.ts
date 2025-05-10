@@ -1,4 +1,4 @@
-import { validateAuthEnv } from '../env';
+import { validateAuthEnv } from './env';
 
 describe('validateAuthEnv', () => {
     beforeEach(() => {

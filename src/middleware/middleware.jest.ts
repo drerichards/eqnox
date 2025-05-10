@@ -1,5 +1,5 @@
 import { withAuth } from 'next-auth/middleware';
-import middleware, { config } from '../middleware';
+import middleware, { config } from './middleware';
 
 // Mock next-auth/middleware
 jest.mock('next-auth/middleware', () => ({

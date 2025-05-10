@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Mulish } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/layout/Navigation/Navigation';
-import StyledComponentsRegistry from '@/lib/registry';
+import StyledComponentsRegistry from '@/lib/registry/registry';
 import { SessionProvider } from '@/providers/SessionProvider/SessionProvider';
 import QueryProvider from '@/providers/QueryProvider/QueryProvider';
 

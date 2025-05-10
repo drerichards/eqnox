@@ -1,4 +1,4 @@
-import { SpotifyClient } from '../client';
+import { SpotifyClient } from '../client/client';
 
 describe('SpotifyClient', () => {
   let client: SpotifyClient;

@@ -1,4 +1,4 @@
-import { setSecureCookie, getSecureCookie } from '../cookies';
+import { setSecureCookie, getSecureCookie } from './cookies';
 import { cookies } from 'next/headers';
 
 jest.mock('next/headers', () => ({

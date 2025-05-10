@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 import { useSession } from 'next-auth/react';
-import { useSpotify } from '../useSpotify';
-import { SpotifyClient } from '@/lib/spotify/client';
+import { useSpotify } from './useSpotify';
+import { SpotifyClient } from '@/lib/spotify/client/client';
 
 // Mock next-auth/react
 jest.mock('next-auth/react', () => ({

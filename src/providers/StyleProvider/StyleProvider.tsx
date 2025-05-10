@@ -1,7 +1,7 @@
 'use client';
 
 import { createGlobalStyle } from 'styled-components';
-import StyledComponentsRegistry from '@/lib/registry';
+import StyledComponentsRegistry from '@/lib/registry/registry';
 
 const GlobalStyle = createGlobalStyle`
   :root {

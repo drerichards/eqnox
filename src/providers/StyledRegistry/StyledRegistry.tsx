@@ -1,6 +1,6 @@
 'use client';
 
-import StyledComponentsRegistry from '@/lib/registry';
+import StyledComponentsRegistry from '@/lib/registry/registry';
 import { GlobalStyle } from '@/styles/base';
 
 export default function StyledRegistry({ children }: { children: React.ReactNode }) {

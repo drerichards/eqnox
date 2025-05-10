@@ -1,7 +1,7 @@
 'use client';
 
 import { useVirtualizer } from '@tanstack/react-virtual';
-import { useWindowSize } from '@/hooks/useWindowSize';
+import { useWindowSize } from '@/hooks/useWindowSize/useWindowSize';
 import { PlaylistCard } from '@/components/features/playlist/PlaylistCard/PlaylistCard';
 import { useCallback, useRef, useState, useEffect } from 'react';
 import { SpotifyPlaylist } from '@/lib/spotify/types';

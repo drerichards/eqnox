@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { SpotifyClient } from '@/lib/spotify/client';
+import { SpotifyClient } from '@/lib/spotify/client/client';
 
 export function useSpotify() {
   const { data: session } = useSession();
