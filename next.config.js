@@ -13,9 +13,6 @@ const nextConfig = {
       'image-cdn-ak.spotifycdn.com',
     ],
   },
-  experimental: {
-    turbo: true
-  }
 };
 
 module.exports = nextConfig;
