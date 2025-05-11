@@ -6,18 +6,13 @@ export const calculateGridConfig = (width: number) => {
     const columnWidth = 200;
     const gap = 20;
     const containerPadding = 40;
-    const maxColumns = 6;
-    const availableWidth = width - containerPadding;
-
-    const columnCount = Math.min(
-        maxColumns,
-        Math.max(1, Math.floor(availableWidth / (columnWidth + gap)))
-    );
-
-    return {
-        columnCount,
-        maxWidth: `${columnCount * (columnWidth + gap)}px`,
-    };
+    // Adjusted breakpoints for stricter column control
+    if (width < 600) return { columnCount: 1, maxWidth: `${1 * (columnWidth + gap)}px` };
+    if (width < 900) return { columnCount: 2, maxWidth: `${2 * (columnWidth + gap)}px` };
+    if (width < 1100) return { columnCount: 3, maxWidth: `${3 * (columnWidth + gap)}px` };
+    if (width < 1500) return { columnCount: 4, maxWidth: `${4 * (columnWidth + gap)}px` };
+    if (width < 1800) return { columnCount: 5, maxWidth: `${5 * (columnWidth + gap)}px` };
+    return { columnCount: 6, maxWidth: `${6 * (columnWidth + gap)}px` };
 };
 
 export const getRowCount = (playlists: SpotifyPlaylist[], columnCount: number) => {

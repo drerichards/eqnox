@@ -9,6 +9,9 @@ import { PlaylistErrorBoundary } from '@/components/features/playlist/PlaylistEr
 import { PlaylistSkeletonGrid } from '@/components/features/playlist/PlaylistSkeletonGrid/PlaylistSkeletonGrid';
 import { PlaylistGrid } from '@/components/features/playlist/PlaylistGrid/PlaylistGrid';
 import { PlaylistControls } from '@/components/features/playlist/PlaylistControls/PlaylistControls';
+import { SORT_OPTIONS, SORT_ORDER } from '@/lib/constants';
+import { useWindowSize } from '@/hooks/useWindowSize/useWindowSize';
+import { calculateGridConfig } from '@/components/features/playlist/PlaylistGrid/PlaylistGrid.helpers';
 
 const Container = styled.div`
   padding: 2rem;
@@ -25,11 +28,18 @@ const LibraryPage: FC = () => {
     const limit = Number(searchParams.get('limit')) || networkAwareLimit;
     const page = Number(searchParams.get('page')) || 1;
     const offset = (page - 1) * limit;
+    const sortBy = searchParams.get('sortBy') || SORT_OPTIONS.DEFAULT;
+    const sortOrder = searchParams.get('sortOrder') || SORT_ORDER.ASC;
 
     const { playlists, isLoading, error, total } = usePlaylists({
         limit,
-        offset
+        offset,
+        sortBy,
+        sortOrder
     });
+
+    const { width } = useWindowSize();
+    const { columnCount } = calculateGridConfig(width);
 
     // Calculate max pages and redirect if current page is out of bounds
     useEffect(() => {
@@ -45,12 +55,13 @@ const LibraryPage: FC = () => {
         <Container>
             <PlaylistErrorBoundary>
                 <Suspense fallback={<PlaylistSkeletonGrid />}>
-                    <PlaylistControls />
+                    <PlaylistControls columnCount={columnCount} />
                     <PlaylistGrid
                         playlists={playlists}
                         isLoading={isLoading}
                         error={error}
                         totalItems={total}
+                        columnCount={columnCount}
                     />
                 </Suspense>
             </PlaylistErrorBoundary>

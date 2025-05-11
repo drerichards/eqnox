@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const Controls = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #1e293b; // or your theme background
+    padding: 1rem;
 `;
 
-export const LimitSelect = styled.select`
+const SelectBase = styled.select`
     appearance: none;
     background: rgba(30, 41, 59, 0.6);
     color: white;
@@ -26,6 +27,7 @@ export const LimitSelect = styled.select`
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: calc(100% - 0.75rem) center;
+    min-width: 160px;
 
     &:hover {
         background-color: rgba(30, 41, 59, 0.7);
@@ -52,4 +54,16 @@ export const LimitSelect = styled.select`
         color: white;
         padding: 8px;
     }
+`;
+
+export const LimitSelect = styled(SelectBase)`
+    min-width: 140px;
+`;
+
+export const SortSelect = styled(SelectBase)`
+    min-width: 180px;
+`;
+
+export const SortOrderSelect = styled(SelectBase)`
+    min-width: 200px;
 `;

@@ -37,9 +37,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--background);
   color: var(--foreground);
-  min-height: 100vh;
+  overflow: hidden;
 }
 
 #root {
   min-height: 100vh;
-} 
+}

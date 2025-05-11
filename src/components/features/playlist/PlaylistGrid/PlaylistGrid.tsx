@@ -24,6 +24,7 @@ interface PlaylistGridProps {
   error: string | null;
   rowHeight?: number;
   totalItems: number;
+  columnCount: number;
 }
 
 export function PlaylistGrid({

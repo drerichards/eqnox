@@ -11,6 +11,7 @@ import {
     isPageActive,
     isPageDisabled
 } from './PaginationControls.helpers';
+import { useWindowSize } from '@/hooks/useWindowSize/useWindowSize';
 
 interface PaginationControlsProps {
     totalItems: number;
@@ -21,6 +22,9 @@ export function PaginationControls({ totalItems, itemsPerPage }: PaginationContr
     const router = useRouter();
     const searchParams = useSearchParams();
     const pathname = usePathname();
+    const { width } = useWindowSize();
+    // Responsive number of visible page buttons
+    const visiblePages = width < 600 ? 3 : width < 900 ? 5 : 7;
 
     const currentPage = getCurrentPage(searchParams);
     const totalPages = calculateTotalPages(totalItems, itemsPerPage);
@@ -36,7 +40,7 @@ export function PaginationControls({ totalItems, itemsPerPage }: PaginationContr
                 ←
             </PageButton>
 
-            {getVisiblePages(currentPage, totalPages).map((page, index) => (
+            {getVisiblePages(currentPage, totalPages, visiblePages).map((page, index) => (
                 typeof page === 'number' ? (
                     <PageButton
                         key={index}

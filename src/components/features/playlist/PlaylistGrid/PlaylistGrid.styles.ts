@@ -1,4 +1,4 @@
-import styled, { keyframes, createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 export const GridWrapper = styled.div`
   display: flex;
@@ -11,10 +11,17 @@ export const GridWrapper = styled.div`
 export const GridContainer = styled.div`
   flex: 1;
   overflow-y: auto;
-  overflow-x: hidden;
+  padding: 32px 32px 48px 32px; // top, right, bottom, left
+  box-sizing: border-box;
   width: 100%;
-  padding: 20px;
-  padding-bottom: 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+  @media (max-width: 900px) {
+    padding: 24px 12px 36px 12px;
+  }
+  @media (max-width: 600px) {
+    padding: 12px 4px 24px 4px;
+  }
 
   /* Custom scrollbar styling */
   &::-webkit-scrollbar {
@@ -28,7 +35,7 @@ export const GridContainer = styled.div`
   &::-webkit-scrollbar-thumb {
     background: rgba(148, 163, 184, 0.2);
     border-radius: 4px;
-    
+
     &:hover {
       background: rgba(148, 163, 184, 0.3);
     }
@@ -50,6 +57,18 @@ export const PaginationWrapper = styled.div`
   padding: 20px 0;
   margin-top: -60px;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+    padding: 12px 0;
+    button {
+      min-width: 32px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
 `;
 
 export const flashHighlight = keyframes`
@@ -61,9 +80,10 @@ export const flashHighlight = keyframes`
 export const GridContent = styled.div<{ $maxWidth: string; $isLimitChange: boolean }>`
   position: relative;
   width: 100%;
-  max-width: ${props => props.$maxWidth};
-  margin: 0 auto;
-  animation: ${props => props.$isLimitChange ? flashHighlight : 'none'} 0.5s ease;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0;
+  animation: ${(props) => (props.$isLimitChange ? flashHighlight : 'none')} 0.5s ease;
 `;
 
 export const PlaylistCardWrapper = styled.div`
@@ -84,9 +104,10 @@ export const PlaylistCardWrapper = styled.div`
 `;
 
 export const PageButton = styled.button<{ $active?: boolean }>`
-  background: ${props => props.$active ? 'rgba(148, 163, 184, 0.2)' : 'transparent'};
-  color: ${props => props.$active ? '#ffffff' : 'rgba(148, 163, 184, 0.8)'};
-  border: 1px solid ${props => props.$active ? 'rgba(148, 163, 184, 0.4)' : 'rgba(148, 163, 184, 0.1)'};
+  background: ${(props) => (props.$active ? 'rgba(148, 163, 184, 0.2)' : 'transparent')};
+  color: ${(props) => (props.$active ? '#ffffff' : 'rgba(148, 163, 184, 0.8)')};
+  border: 1px solid
+    ${(props) => (props.$active ? 'rgba(148, 163, 184, 0.4)' : 'rgba(148, 163, 184, 0.1)')};
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   cursor: pointer;

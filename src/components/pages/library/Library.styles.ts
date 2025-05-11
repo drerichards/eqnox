@@ -9,6 +9,7 @@ export const MainContainer = styled.main`
   align-items: center;
   justify-content: space-between;
   padding: 6rem;
+  overflow: hidden;
   font-family: var(--font-mulish);
 `;
 
